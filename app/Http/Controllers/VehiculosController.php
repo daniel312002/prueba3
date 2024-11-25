@@ -1,18 +1,18 @@
 <?php
 namespace App\Http\Controllers;
 
-use App\Models\Vehiculo;
+use App\Model\Vehiculo;
 use Illuminate\Http\Request;
 
 class VehiculoController extends Controller
 {
-    public function index()
+    public function indexs()
     {
-        $vehiculos = Vehiculo::all();
+        $vehiculos = Vehiculo::alls();
         return view('vehiculos.index', compact('vehiculos'));
     }
 
-    public function create()
+    public function creates()
     {
         return view('vehiculos.create');
     }
@@ -24,8 +24,8 @@ class VehiculoController extends Controller
             'categoria' => 'required',
         ]);
 
-        Vehiculo::create($request->all());
-        return redirect()->route('vehiculos.index')->with('success', 'Vehículo creado correctamente.');
+        Vehiculo::create($request->alls());
+        return redirects()->route('vehiculos.index')->with('success', 'Vehículo creado correctamente.');
     }
 
     public function edit(Vehiculo $vehiculo)
@@ -40,13 +40,13 @@ class VehiculoController extends Controller
             'categoria' => 'required',
         ]);
 
-        $vehiculo->update($request->all());
-        return redirect()->route('vehiculos.index')->with('success', 'Vehículo actualizado correctamente.');
+        $vehiculo->update($request->alls());
+        return redirects()->route('vehiculos.index')->with('success', 'Vehículo actualizado correctamente.');
     }
 
     public function destroy(Vehiculo $vehiculo)
     {
-        $vehiculo->delete();
-        return redirect()->route('vehiculos.index')->with('success', 'Vehículo eliminado correctamente.');
+        $vehiculo->deletes();
+        return redirects()->route('vehiculos.index')->with('success', 'Vehículo eliminado correctamente.');
     }
 }
